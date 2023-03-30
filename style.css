@@ -1,0 +1,187 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Bubblegum Sans', 'cursive';
+}
+
+body{
+    background-color: lightskyblue;
+    margin: 0 25%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0;
+}
+
+/******************************** Add To Do *************************************/
+.search{
+    display: flex;
+    height: 30px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.search input{
+    width: 85%;
+    height: 35px;
+    border-radius: 7px;
+    border: 1px solid grey;
+    outline: none;
+    padding: 0 5px;
+}
+
+.search input::placeholder{
+    color: lightgrey
+}
+
+.search button{
+    width: 15%;
+    height: 35px;
+    border-radius: 7px;
+    background-color: lightgreen;
+    border: 1px solid green;
+}
+
+/******************************** Filters *************************************/
+
+.filters{
+    display: flex;
+    height: 30px;
+    margin-bottom: 40px;
+}
+
+.filter{
+    height: 30px;
+    width: 70px;
+    border: 1px solid lightgreen;
+    color: lightgreen;
+    border-left: none;
+    cursor: pointer;
+}
+
+.filter:nth-child(1){
+    border-radius: 7px 0 0 7px;
+    border: 1px solid lightgreen;
+}
+
+.filter:nth-child(3){
+    border-radius: 0 7px 7px 0;
+}
+
+.filter.active {
+    background-color: lightgreen;
+    border: 1px solid green;
+    color: white;
+}
+
+/******************************** List *************************************/
+
+.todolist{
+    width: 100%;
+}
+
+.list-group {
+    border-radius: 7px;
+    border: 1px solid grey;
+    overflow: hidden;
+
+    box-shadow: 10px 15px 15px 10px hsla(0, 0%, 11%, 0.191)
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+    height: fit-content;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    border-bottom: solid 1px grey;
+}
+
+.list-item:nth-last-child(1){
+    border: none;
+}
+
+
+    .list-item input{
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 1px solid black;
+        border-radius: 3px;
+        margin-right: 10px;
+        aspect-ratio: 1;
+    }
+    .list-item input:checked{
+        border: 1px solid green;
+        background-color: lightgreen;
+        position: relative;
+    }
+
+    .list-item input:checked::after{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        content: '\2713';
+        font-weight: bold;
+        color: #f2f2f2;
+    }
+
+    .list-item label {
+        display: block;
+        word-wrap: normal;
+        width: 90%;
+        height: fit-content;
+        word-wrap: break-word;
+    }
+
+
+    .delete{
+        display: block;
+        margin-left: 5px;
+        width: 30px;
+        height: 30px;
+        background-color: lightcoral;
+        border: 1px solid red;
+        border-radius: 4px;
+        line-height: 10px;
+        aspect-ratio: 1;
+    }
+
+    .delete i{
+        scale: 1.1;
+    }
+
+
+
+.hidden{
+    display: none;
+}
+
+
+/* Filtres */
+
+.list-group.done .list-item:not(.completed){
+    display: none;
+}
+
+.list-group.todo .list-item.completed{
+    display: none;
+}
