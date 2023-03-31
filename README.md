@@ -10,6 +10,7 @@ Création d'une ToDoList effectuée durant le suivi de la [formation JavaScript 
 - Manipulation du DOM
 - fetch d'une API 
 - Utilisation des Classes
+- Utilisation des Templates pour la création de nouvelles tâches
 
 
 ## Tech Stack
