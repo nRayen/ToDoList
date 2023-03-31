@@ -6,7 +6,6 @@ try{
     const todos = await fetchJSON("https://jsonplaceholder.typicode.com/todos?_limit=5")
     const list = new TodoList(todos)
     list.appendTo(document.querySelector('.list-group'))
-    console.log(list)
 } catch {
     alert('Erreur lors du chargement des données')
 }
@@ -33,9 +32,5 @@ filters.forEach((filter)=>{
             listgroup.classList.remove('done')
             listgroup.classList.remove('todo')
         }
-
-
-
-
     })
 })
