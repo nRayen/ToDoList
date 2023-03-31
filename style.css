@@ -7,12 +7,17 @@
     font-family: 'Bubblegum Sans', 'cursive';
 }
 
+button {
+    color: black;
+}
+
 body{
     background-color: lightskyblue;
     margin: 0 25%;
     height: 100vh;
     display: flex;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 .container{
@@ -21,6 +26,10 @@ body{
     display: flex;
     flex-direction: column;
     padding: 30px 0;
+}
+
+.search, .filters, .list-group {
+    box-shadow: 10px 15px 15px 10px hsla(0, 0%, 11%, 0.191)
 }
 
 /******************************** Add To Do *************************************/
@@ -52,12 +61,66 @@ body{
     border: 1px solid green;
 }
 
+/******************************** Donut background *************************************/
+.background {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -1;
+}
+
+
+#donut, #donutshadow{
+    
+    z-index: -1;
+    position: absolute;
+    scale: 0.5;
+    top: -500px;
+
+    animation: fall 33s linear infinite 4s,
+               rotateDonut 1s linear infinite;
+}
+
+#donutshadow {
+    opacity: 0.15;
+    z-index: -2;
+    animation: fall 33s linear infinite 4s;
+
+    filter: drop-shadow(50px 50px 15px  hsl(0, 0%, 0%));
+
+}
+
+@keyframes fall {
+    0%, 10% {
+        visibility: visible;
+        top: -500px;
+    }
+
+    10% {
+        visibility: visible;
+        top: 100%;
+    }
+    11%, 100% {
+        visibility: hidden;
+    }
+}
+
+@keyframes rotateDonut {
+    from {
+        transform: rotate(0deg);
+    } to {
+        transform: rotate(359deg);
+    }
+}
 /******************************** Filters *************************************/
 
 .filters{
     display: flex;
     height: 30px;
+    width: fit-content;
     margin-bottom: 40px;
+    border-radius: 7px;
 }
 
 .filter{

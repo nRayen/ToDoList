@@ -16,6 +16,10 @@
 
 
 <body>
+    <div class="background">
+        <img id="donut" src="img/donut.png" alt="donut des simpsons">
+        <img id="donutshadow" src="img/donut.png" alt="ombre donut des simpsons">
+    </div>
     <section class="container">
         <form id="additem" class="search">
             <input name ="additeminput" type="text" required placeholder="Add a task...">
@@ -30,31 +34,15 @@
         
         <main class="todolist">
             <ul class="list-group">
-                <!-- <li class="list-item">
-                    <input class="item-checkbox" type="checkbox" id="todo1">
-                    <label class="item-title" for="todo1">Todo 1</label>
-                    <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
-                </li>
-                <li class="list-item">
-                    <input class="item-checkbox" type="checkbox" id="todo2">
-                    <label class="item-title" for="todo2">Todo 2</label>
-                    <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
-                </li>
-                <li class="list-item">
-                    <input class="item-checkbox" type="checkbox" id="todo3">
-                    <label class="item-title" for="todo3">Todo 3</label>
-                    <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
-                </li> -->
+                <template id="todo-template">
+                    <li class="list-item">
+                        <input class="item-checkbox" type="checkbox" id="todo1">
+                        <label class="item-title" for="todo1">Todo 1</label>
+                        <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
+                    </li>
+                </template>
             </ul>
         </main>
-    </section>
-
-
-
-
-
-
-
-    
+    </section> 
 </body>
 </html>

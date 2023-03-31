@@ -1,4 +1,4 @@
-import { createElement } from "../Functions/dom.js"
+import { cloneTemplate, createElement } from "../Functions/dom.js"
 
 export class TodoList {
 
@@ -28,6 +28,10 @@ export class TodoList {
     onSubmit(e){
         e.preventDefault()
         let title = new FormData(e.currentTarget).get("additeminput").toString().trim();
+        if (title == ""){
+            e.currentTarget.querySelector('form input').value = ''
+            return
+        }
 
         let todo = {
             id : Date.now(),
@@ -48,38 +52,31 @@ export class TodoList {
 
 
 export class TodoListItem {
-
+    /**
+     *  @type {HTMLLIElement}
+     */
     #element
 
     constructor (todo){
         const id = todo.id
 
-        const li = createElement('li', {
-            class: todo.completed ? 'list-item completed' : 'list-item'
-        })
+        let li = cloneTemplate('todo-template').querySelector('li')
+        let checkbox = li.querySelector('input')
+        let label = li.querySelector('label')
+        let deleteBtn = li.querySelector('button')
+        
+        this.#element = li
+        if (todo.completed) {
+            li.classList.add('completed')
+            checkbox.setAttribute('checked', "")
+        }
 
-        const checkbox = createElement('input',{
-            class: "item-checkbox",
-            type:"checkbox",
-            id: `${id}`,
-            checked: todo.completed ? '' : null
-        })
+        label.setAttribute('for', id)
+        checkbox.setAttribute('id', id)
 
-        const label = createElement('label', {
-            class: "item-title",
-            for: `${id}`
-        })
         label.innerHTML = todo.title
 
-        const deleteBtn = createElement('button',{
-            class: "delete"
-        })
         deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>'
-
-        li.append(checkbox)
-        li.append(label)
-        li.append(deleteBtn)
-        this.#element = li
 
         deleteBtn.addEventListener('click', (e) => this.removeTask(e))
 
@@ -89,14 +86,13 @@ export class TodoListItem {
             } else {
                 this.#element.classList.remove('completed')
             }
-            console.log(e.currentTarget)
         })
 
         
     }
 
     appendTo (element) {
-        element.append(this.#element)
+        element.prepend(this.#element)
     }
 
     removeTask(e){
