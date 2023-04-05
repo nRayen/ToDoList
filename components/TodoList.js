@@ -78,17 +78,9 @@ export class TodoListItem {
 
         deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>'
 
-        deleteBtn.addEventListener('click', (e) => this.removeTask(e))
+        deleteBtn.addEventListener('click', (e) => this.removeTask(e)) // Supprime les tâches
 
-        checkbox.addEventListener('change', (e) => {
-            if (e.currentTarget.checked){
-                this.#element.classList.add('completed')
-            } else {
-                this.#element.classList.remove('completed')
-            }
-        })
-
-        
+        checkbox.addEventListener('change', (e) => this.toggle(e)) // Toggle la classe .completed sur les .list-item        
     }
 
     appendTo (element) {
@@ -98,5 +90,14 @@ export class TodoListItem {
     removeTask(e){
         e.preventDefault()
         this.#element.remove()
+    }
+
+    toggle(e){
+        e.preventDefault()
+        if (e.currentTarget.checked){
+            this.#element.classList.add('completed')
+        } else {
+            this.#element.classList.remove('completed')
+        }
     }
 }
