@@ -32,6 +32,11 @@ body{
     box-shadow: 10px 15px 15px 10px hsla(0, 0%, 11%, 0.191)
 }
 
+
+.submit-form, .list-item > * {
+    cursor: pointer;
+}
+
 /******************************** Add To Do *************************************/
 .search{
     display: flex;
