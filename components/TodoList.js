@@ -18,6 +18,11 @@ export class TodoList {
             t.appendTo(this.#listElement)
         }
         document.querySelector('form').addEventListener('submit', e => this.onSubmit(e))
+
+
+        // Mise à jour dynamique du tableau #todos
+        this.#listElement.addEventListener('delete', (e) => this.#todos = this.#todos.filter(t => t != e.detail))
+        this.#listElement.addEventListener('toggle', (e) => e.detail.completed = !e.detail.completed)
     }
 
 
@@ -56,8 +61,10 @@ export class TodoListItem {
      *  @type {HTMLLIElement}
      */
     #element
+    #todo
 
     constructor (todo){
+        this.#todo = todo
         const id = todo.id
 
         let li = cloneTemplate('todo-template').querySelector('li')
@@ -80,8 +87,11 @@ export class TodoListItem {
 
         deleteBtn.addEventListener('click', (e) => this.removeTask(e)) // Supprime les tâches
 
-        checkbox.addEventListener('change', (e) => this.toggle(e)) // Toggle la classe .completed sur les .list-item        
+        checkbox.addEventListener('change', (e) => this.toggle(e)) // Toggle la classe .completed sur les .list-item  
     }
+
+
+
 
     appendTo (element) {
         element.prepend(this.#element)
@@ -89,8 +99,18 @@ export class TodoListItem {
 
     removeTask(e){
         e.preventDefault()
+        
+        const deleteEvent = new CustomEvent('delete',{
+            detail: this.#todo,
+            bubbles: true 
+        })
+        this.#element.dispatchEvent(deleteEvent)
+
+
         this.#element.remove()
     }
+
+
 
     toggle(e){
         e.preventDefault()
@@ -99,5 +119,12 @@ export class TodoListItem {
         } else {
             this.#element.classList.remove('completed')
         }
+
+        const toggleEvent = new CustomEvent('toggle',{
+            detail: this.#todo,
+            bubbles: true 
+        })
+
+        this.#element.dispatchEvent(toggleEvent)
     }
 }
