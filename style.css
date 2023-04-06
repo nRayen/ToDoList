@@ -52,6 +52,13 @@ body{
     border: 1px solid grey;
     outline: none;
     padding: 0 5px;
+    caret-color: lightgreen;
+    caret-shape: 3px;
+}
+
+.search input:focus{
+    outline: solid lightgreen;
+    border: none;
 }
 
 .search input::placeholder{
@@ -84,7 +91,7 @@ body{
     top: -500px;
 
     animation: fall 33s linear infinite 4s,
-               rotateDonut 1s linear infinite;
+               rotateDonut 3s linear infinite;
 }
 
 #donutshadow {
@@ -118,6 +125,14 @@ body{
         transform: rotate(359deg);
     }
 }
+
+/******************************** Homer background *************************************/
+#homer {
+    height: 60%;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+}
 /******************************** Filters *************************************/
 
 .filters{
@@ -132,7 +147,7 @@ body{
     height: 30px;
     width: 70px;
     border: 1px solid lightgreen;
-    color: lightgreen;
+    color: green;
     border-left: none;
     cursor: pointer;
 }
@@ -149,7 +164,7 @@ body{
 .filter.active {
     background-color: lightgreen;
     border: 1px solid green;
-    color: white;
+    color: black;
 }
 
 /******************************** List *************************************/
@@ -164,11 +179,6 @@ body{
     overflow: hidden;
 
     box-shadow: 10px 15px 15px 10px hsla(0, 0%, 11%, 0.191)
-}
-
-.list{
-    display: flex;
-    flex-direction: column;
 }
 
 .list-item{
@@ -218,6 +228,7 @@ body{
         width: 90%;
         height: fit-content;
         word-wrap: break-word;
+        white-space: pre-wrap;
     }
 
 

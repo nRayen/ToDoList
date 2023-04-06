@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDoList</title>
+    <link rel="shortcut icon" href="img/donut.png"/> "
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +20,8 @@
     <div class="background">
         <img id="donut" src="img/donut.png" alt="donut des simpsons">
         <img id="donutshadow" src="img/donut.png" alt="ombre donut des simpsons">
+
+        <img id="homer" src="img/homer.png" alt="homer simpsons">
     </div>
     <section class="container">
         <form id="additem" class="search">
@@ -34,15 +37,17 @@
         
         <main class="todolist">
             <ul class="list-group">
-                <template id="todo-template">
-                    <li class="list-item">
-                        <input class="item-checkbox" type="checkbox" id="todo1">
-                        <label class="item-title" for="todo1">Todo 1</label>
-                        <button class="delete"><i class="fa-solid fa-trash-can"></i></button>
-                    </li>
-                </template>
             </ul>
         </main>
     </section> 
+
+    <!-- // Todo Template -->
+    <template id="todo-template">
+        <li class="list-item">
+            <input class="item-checkbox" type="checkbox">
+            <label class="item-title" for="todo1"></label>
+            <button class="delete"  title="delete task"><i class="fa-solid fa-trash-can"></i></button>
+        </li>
+    </template>
 </body>
 </html>

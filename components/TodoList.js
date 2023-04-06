@@ -83,8 +83,6 @@ export class TodoListItem {
 
         label.innerHTML = todo.title
 
-        deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i>'
-
         deleteBtn.addEventListener('click', (e) => this.removeTask(e)) // Supprime les tâches
 
         checkbox.addEventListener('change', (e) => this.toggle(e)) // Toggle la classe .completed sur les .list-item  
