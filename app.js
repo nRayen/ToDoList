@@ -4,7 +4,12 @@ import { fetchJSON } from "./Functions/api.js";
 
 try{
     //const todos = await fetchJSON("https://jsonplaceholder.typicode.com/todos?_limit=5")
-    const todos = JSON.parse(localStorage.getItem('todos')) 
+    const todosLocalStorage = localStorage.getItem('todos')?.toString()
+    let todos = []
+    if (todosLocalStorage) {
+        todos = JSON.parse(todosLocalStorage)
+    } 
+    
     let list = new TodoList(todos)
     list.appendTo(document.querySelector('.list-group'))
 } catch {
