@@ -3,8 +3,9 @@ import { fetchJSON } from "./Functions/api.js";
 
 
 try{
-    const todos = await fetchJSON("https://jsonplaceholder.typicode.com/todos?_limit=5")
-    const list = new TodoList(todos)
+    //const todos = await fetchJSON("https://jsonplaceholder.typicode.com/todos?_limit=5")
+    const todos = JSON.parse(localStorage.getItem('todos')) 
+    let list = new TodoList(todos)
     list.appendTo(document.querySelector('.list-group'))
 } catch {
     alert('Erreur lors du chargement des données')

@@ -21,8 +21,15 @@ export class TodoList {
 
 
         // Mise à jour dynamique du tableau #todos
-        this.#listElement.addEventListener('delete', (e) => this.#todos = this.#todos.filter(t => t != e.detail))
-        this.#listElement.addEventListener('toggle', (e) => e.detail.completed = !e.detail.completed)
+        this.#listElement.addEventListener('delete', (e) => {
+            this.#todos = this.#todos.filter(t => t != e.detail)
+            this.onUpdate();
+        })
+        this.#listElement.addEventListener('toggle', (e) => {
+            e.detail.completed = !e.detail.completed;
+            this.onUpdate();
+            console.log(this.#todos)
+        })
     }
 
 
@@ -47,9 +54,14 @@ export class TodoList {
         let item = new TodoListItem(todo);
         item.appendTo(document.querySelector('.list-group'))
         e.currentTarget.querySelector('form input').value = ''
+
+        this.#todos.push(todo)
+        this.onUpdate();
+    } 
+    
+    onUpdate () {
+        localStorage.setItem('todos', JSON.stringify(this.#todos))
     }
-    
-    
 }
 
 
@@ -104,7 +116,6 @@ export class TodoListItem {
         })
         this.#element.dispatchEvent(deleteEvent)
 
-
         this.#element.remove()
     }
 
@@ -122,7 +133,6 @@ export class TodoListItem {
             detail: this.#todo,
             bubbles: true 
         })
-
         this.#element.dispatchEvent(toggleEvent)
     }
 }

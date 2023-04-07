@@ -14,7 +14,7 @@ button {
 body{
     background-color: lightskyblue;
     margin: 0 25%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     overflow-x: hidden;
@@ -77,7 +77,7 @@ body{
 .background {
     overflow: hidden;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     position: absolute;
     z-index: -1;
 }
@@ -129,9 +129,11 @@ body{
 /******************************** Homer background *************************************/
 #homer {
     height: 60%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    right: 10px;
+    right: 20px;
+
+    filter: drop-shadow(50px 50px 15px  hsla(0, 0%, 0%, 0.298));
 }
 /******************************** Filters *************************************/
 
@@ -165,6 +167,10 @@ body{
     background-color: lightgreen;
     border: 1px solid green;
     color: black;
+}
+
+.list-group.done .list-item:not(.completed), .list-group.todo .list-item.completed{
+    display: none;
 }
 
 /******************************** List *************************************/
@@ -257,10 +263,3 @@ body{
 
 /* Filtres */
 
-.list-group.done .list-item:not(.completed){
-    display: none;
-}
-
-.list-group.todo .list-item.completed{
-    display: none;
-}
